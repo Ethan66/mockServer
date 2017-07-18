@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)http://book.jirengu.com/jrg-team/frontend-knowledge-ppt/code/server-mock/ajax/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+</head>
+<body>
+  <div class="query-area">
+    <input type="text" name="username">
+    <button>查询</button>  
+  </div>
+  <div class="detail-area">
+    <ul>     
+    </ul>
+
+  </div>
+
+  <script>
+    var btn = document.querySelector('.query-area button')
+    var input = document.querySelector('.query-area input')
+    var detailCt = document.querySelector('.detail-area ul')
+
+    //异步
+    /* btn.addEventListener('click', function(){                 //ajax是规定前端如何去向后台去要数据
+        var xhr = new XMLHttpRequest()                      //1、new一个对象
+        xhr.onreadystatechange = function(){                //4、每次readyState改变的时候都调用这个函数
+          if(xhr.readyState == 4 && (xhr.status == '200' || xhr.status == '304')){            //5/200表示响应是ok的，304是从缓冲中获取，也表示ok
+           var friends = JSON.parse(xhr.responseText)      //获取数据后，转化为JSON
+           var html = render(friends)                  //调用render()函数
+           detailCt.innerHTML = html                   //把html加载到ul标签里面
+          }
+        }
+
+       xhr.open('get', '/friends?username=' + input.value, true)             //2、向后台发送参数，包括1、请求类型，2、请求发送给谁，3、true表示异步
+       xhr.send()                                                          //3、把请求发送出去
+     })*/
+
+
+    btn.addEventListener('click', function(){
+      var xhr = new XMLHttpRequest()
+
+      xhr.open('get', '/friends?username=' + input.value, false)
+      xhr.send()
+      var friends = JSON.parse(xhr.responseText)
+      var html = render(friends)
+      detailCt.innerHTML = html     
+    })
+
+
+    function render(friends){
+      var html = ''
+      for(var i = 0; i < friends.length; i++){
+        html += '<li>' + friends[i] + '</li>'
+      }
+      return html
+    }
+  </script>
+  
+
+
+</body></html>
