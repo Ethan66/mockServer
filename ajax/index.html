@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <!-- saved from url=(0088)http://book.jirengu.com/jrg-team/frontend-knowledge-ppt/code/server-mock/ajax/index.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
   <div class="query-area">
     <input type="text" name="username">
-    <button>²éÑ¯</button>  
+    <button>æŸ¥è¯¢</button>  
+  </div>
+  <div class="btn">
+    <input type="text" name="username">
+    <button>ç‚¹å‡»</button>
   </div>
   <div class="detail-area">
     <ul>     
@@ -14,27 +18,47 @@
   </div>
 
   <script>
-    var btn = document.querySelector('.query-area button')
+    //å¢åŠ isDataArriveå˜é‡ï¼Œåœ¨æ•°æ®åˆ°æ¥ä¹‹å‰é˜²æ­¢é‡å¤ç‚¹å‡»
+    var btn=document.querySelector(".btn button");
+    var input=document.querySelector(".btn input");
+    var isDataArrive=true;
+    btn.addEventListener("click",function(){
+        if(!isDataArrive) return;
+        var xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState===4){
+                if(xhr.status===200||xhr.status===304){
+                    var friends=JSON.parse(xhr.responseText);
+                }
+                else console.log("å‡ºé”™äº†");
+                isDataArrive=true;
+            }
+        };
+        xhr.open("get","/friends?username="+input.value,true);
+        xhr.send();
+        isDataArrive=false;
+    });
+    /*var btn = document.querySelector('.query-area button')
     var input = document.querySelector('.query-area input')
     var detailCt = document.querySelector('.detail-area ul')
 
-    //Òì²½
-    /* btn.addEventListener('click', function(){                 //ajaxÊÇ¹æ¶¨Ç°¶ËÈçºÎÈ¥ÏòºóÌ¨È¥ÒªÊı¾İ
-        var xhr = new XMLHttpRequest()                      //1¡¢newÒ»¸ö¶ÔÏó
-        xhr.onreadystatechange = function(){                //4¡¢Ã¿´ÎreadyState¸Ä±äµÄÊ±ºò¶¼µ÷ÓÃÕâ¸öº¯Êı
-          if(xhr.readyState == 4 && (xhr.status == '200' || xhr.status == '304')){            //5/200±íÊ¾ÏìÓ¦ÊÇokµÄ£¬304ÊÇ´Ó»º³åÖĞ»ñÈ¡£¬Ò²±íÊ¾ok
-           var friends = JSON.parse(xhr.responseText)      //»ñÈ¡Êı¾İºó£¬×ª»¯ÎªJSON
-           var html = render(friends)                  //µ÷ÓÃrender()º¯Êı
-           detailCt.innerHTML = html                   //°Ñhtml¼ÓÔØµ½ul±êÇ©ÀïÃæ
+    //å¼‚æ­¥
+     btn.addEventListener('click', function(){                 //ajaxæ˜¯è§„å®šå‰ç«¯å¦‚ä½•å»å‘åå°å»è¦æ•°æ®
+        var xhr = new XMLHttpRequest()                      //1ã€newä¸€ä¸ªå¯¹è±¡
+        xhr.onreadystatechange = function(){                //4ã€æ¯æ¬¡readyStateæ”¹å˜çš„æ—¶å€™éƒ½è°ƒç”¨è¿™ä¸ªå‡½æ•°
+          if(xhr.readyState == 4 && (xhr.status == '200' || xhr.status == '304')){            //5/200è¡¨ç¤ºå“åº”æ˜¯okçš„ï¼Œ304æ˜¯ä»ç¼“å†²ä¸­è·å–ï¼Œä¹Ÿè¡¨ç¤ºok
+           var friends = JSON.parse(xhr.responseText)      //è·å–æ•°æ®åï¼Œè½¬åŒ–ä¸ºJSON
+           var html = render(friends)                  //è°ƒç”¨render()å‡½æ•°
+           detailCt.innerHTML = html                   //æŠŠhtmlåŠ è½½åˆ°ulæ ‡ç­¾é‡Œé¢
           }
         }
 
-       xhr.open('get', '/friends?username=' + input.value, true)             //2¡¢ÏòºóÌ¨·¢ËÍ²ÎÊı£¬°üÀ¨1¡¢ÇëÇóÀàĞÍ£¬2¡¢ÇëÇó·¢ËÍ¸øË­£¬3¡¢true±íÊ¾Òì²½
-       xhr.send()                                                          //3¡¢°ÑÇëÇó·¢ËÍ³öÈ¥
+       xhr.open('get', '/friends?username=' + input.value, true)             //2ã€å‘åå°å‘é€å‚æ•°ï¼ŒåŒ…æ‹¬1ã€è¯·æ±‚ç±»å‹ï¼Œ2ã€è¯·æ±‚å‘é€ç»™è°ï¼Œ3ã€trueè¡¨ç¤ºå¼‚æ­¥
+       xhr.send()                                                          //3ã€æŠŠè¯·æ±‚å‘é€å‡ºå»
      })*/
 
-
-    btn.addEventListener('click', function(){
+//åŒæ­¥
+    /*btn.addEventListener('click', function(){
       var xhr = new XMLHttpRequest()
 
       xhr.open('get', '/friends?username=' + input.value, false)
@@ -42,7 +66,7 @@
       var friends = JSON.parse(xhr.responseText)
       var html = render(friends)
       detailCt.innerHTML = html     
-    })
+    })*/
 
 
     function render(friends){
