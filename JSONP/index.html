@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+  <div class="newsWrap">
+    <ul>
+      <li>第11日前瞻：中国冲击4金 博尔特再战</li>
+      <li>男双力争会师决赛</li>
+      <li>女排将死磕巴西！</li>
+    </ul>
+    <div class="btn">
+      <button>换一组</button>
+    </div>
+  </div>
+
+  <script>
+    //JSONP跨域获取数据
+    function $$(str){
+        return document.querySelector(str);
+    }
+    var btn=$$(".newsWrap .btn button");
+    var ul=$$(".newsWrap ul");
+    btn.addEventListener("click",function(){
+        var script=document.createElement("script");
+        var src="http://localhost:8080/getNews?callback=getnew";
+        script.src=src;
+        document.head.appendChild(script);
+        document.head.removeChild(script);
+    },false);
+    function getnew(str){
+        var html="";
+        for(var i=0;i<str.length;i++){
+            html+="<li>"+str[i]+"</li>";
+        }
+        ul.innerHTML=html;
+    }
+  </script>
+ <!-- <script>
+      //CORS跨域获取数据
+    function $$(str){
+        return document.querySelector(str);
+    }
+    var btn=$$(".newsWrap .btn button");
+    var ul=$$(".newsWrap ul");
+    btn.addEventListener("click",function(){
+        var xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState===4){
+                if(xhr.status===200|| xhr.status===304){
+                    getnew(JSON.parse(xhr.responseText));
+                }
+                else console.log("出错了");
+            }
+        }
+        xhr.open("get","http://b.jrg.com:8080/getNews",true);
+        xhr.send();
+    },false);
+  </script>-->
+  
+</body>
+</html>
