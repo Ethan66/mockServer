@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <style type="text/css">
+    h1{
+      font-weight: normal;
+    }
+    .main{
+      width: 300px; height: 300px; border: 1px solid #bbb; padding: 20px; float:left;
+    }
+    input{
+      height: 20px; border: 1px solid #ddd;
+    }
+    iframe{
+      width: 300px; height: 300px; border: 1px dashed #bbb; padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>使用降域实现跨域</h1>
+    <div class="main">
+      <input type="text"/>
+    </div>
+    <iframe src="http://b.jrg.com:8080/b.html" frameborder="0"></iframe>
+  </div>
+
+
+
+  <!--<script>
+      //降域方法
+    document.querySelector(".main input").addEventListener("input",function(){
+        console.log(this.value);
+        window.frames[0].document.querySelector("input").value=this.value;
+    });
+    document.domain="jrg.com";
+  </script>-->
+
+  <script>
+    document.querySelector(".main input").addEventListener("input",function(){
+        console.log(this.value);
+        window.frames[0].postMessage(this.value,"http://b.jrg.com:8080/b.html");    //向b.jrg.com:8080/b.html发送数据
+    });
+    window.addEventListener("message",function(e){                         //监听事件，当事件发生时接收数据
+        document.querySelector(".main input").value=e.data;
+        console.log(e.data);
+    })
+  </script>
+  
+</body>
+</html>
