@@ -1,5 +1,5 @@
 
-router.get('/getNews', function(req, res) {
+/*router.get('/getNews', function(req, res) {
 	var getnews = req.query.callback; // 通过 req.query获取请求参数
     var news = [
         "第11日前瞻：中国冲击4金 博尔特再战200米羽球",
@@ -24,10 +24,10 @@ router.get('/getNews', function(req, res) {
     };
 	res.send(getnews+"("+JSON.stringify(arr)+")");
 
-});
+});*/
 
 //CORS跨域获取数据
-/*router.get("/getNews",function(reg,res){
+router.get("/getNews",function(reg,res){
     var getnews=reg.query.callback;
     var news = [
         "第11日前瞻：中国冲击4金 博尔特再战200米羽球",
@@ -52,7 +52,7 @@ router.get('/getNews', function(req, res) {
     };
     res.header("Access-Control-Allow-Origin","http://a.jrg.com:8080");   //表示接受http://a.jrg.com:8080的请求
     res.send(arr);
-});*/
+});
 
 
 

@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <script>
+  <!--<script>
     //JSONP跨域获取数据
     function $$(str){
         return document.querySelector(str);
@@ -35,12 +35,19 @@
         }
         ul.innerHTML=html;
     }
-  </script>
- <!-- <script>
+  </script>-->
+  <script>
       //CORS跨域获取数据
     function $$(str){
         return document.querySelector(str);
     }
+      function getnew(str){
+          var html="";
+          for(var i=0;i<str.length;i++){
+              html+="<li>"+str[i]+"</li>";
+          }
+          ul.innerHTML=html;
+      }
     var btn=$$(".newsWrap .btn button");
     var ul=$$(".newsWrap ul");
     btn.addEventListener("click",function(){
@@ -56,7 +63,7 @@
         xhr.open("get","http://b.jrg.com:8080/getNews",true);
         xhr.send();
     },false);
-  </script>-->
+  </script>
   
 </body>
 </html>
