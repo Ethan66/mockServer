@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style type="text/css">
+    body,div,ul,li,p,a{
+      margin:0; padding: 0;
+    }
+    li{
+      list-style:none;
+    }
+    .content{
+      padding: 10px; font-size: 14px;
+    }
+    .content li{
+      padding: 10px 6px; border: 1px solid #ddd; margin-bottom: 10px;
+    }
+    .content li:hover{
+      background-color: green; color: #fff; cursor: pointer;
+    }
+    .content .btn{
+      text-align: center;
+    }
+    .content .btn a{
+      display: inline-block; *display: inline; *zoom:1; padding: 12px 8px; border: 1px solid red; border-radius: 3px; text-decoration: none;
+      color: red;
+    }
+    .content .btn a:hover{
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+<div class="content">
+  <ul>
+    <li>内容1</li>
+    <li>内容2</li>
+  </ul>
+  <p class="btn">
+    <a href="#">加载更多</a>
+  </p>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <script>
+    var index=2,num=5;
+    var isDataArrive=true;
+    $(".content").on("click",".btn a",function(e){
+        e.preventDefault();
+       $.ajax({url:"/content",method:"get",data:{index:index,num:num}}).done(function(data){
+           if(!isDataArrive) return;
+           var fragment=document.createDocumentFragment();
+           for(var i=0;i<data.length;i++){
+               var li=document.createElement("li");
+               li.innerText=data[i];
+               fragment.appendChild(li);
+           }
+           $(".content ul").append(fragment);
+           index+=num;
+           isDataArrive=false;
+       }).fail(function(){
+           console.log("出错了");
+       });
+       isDataArrive=true;
+    });
+  </script>
+  
+</body>
+</html>
