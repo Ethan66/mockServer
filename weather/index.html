@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_p8gpzpo1732z9f6r.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <style type="text/css">
+    body,div,p,ul,li{
+      padding:0; margin: 0;
+    }
+    i{
+      font-style: normal;
+    }
+    li{
+      list-style: none;
+    }
+    .e-box{
+      box-sizing: border-box;
+    }
+    .weather{
+      width: 1000px; height: 713px; background:url(images/1.jpg) no-repeat; margin: 0 auto; padding: 100px;
+    }
+    .weather .wrap{
+      border-radius: 10px; overflow: hidden;
+    }
+    .weather .img{
+      height:432px; background:url(images/2.jpg) no-repeat; padding: 50px;
+    }
+    .weather .img .city{
+      font-size: 1.8rem; color: #fff;
+    }
+    .weather .img .city p{
+      text-indent: 10px;
+    }
+    .weather .img .tip{
+      color: #dcba49; font-size: 0.8rem; margin-top: 6px;
+    }
+    .weather .img .tip li{
+      cursor: pointer; display: inline-block; text-transform: uppercase; font-family: microsoft yahei;
+    }
+    .weather .img .tip li:hover{
+      color: #FFD859;
+    }
+    .weather .img .tip i{
+      vertical-align: -10%; margin-right: 4px;
+    }
+    .weather .wrap .text{
+      height: 120px; font-size: 0; color: #fff; background-color: rgba(255,255,255,.3);font-family: microsoft yahei;
+    }
+    .weather .text .today{
+      display: inline-block; width: 260px; height: 100%; border-right: 1px solid; vertical-align: top; font-size: 1rem;
+      padding: 4px 0 0 43px; border-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.0)) 10;
+    }
+    .weather .text .today>div{
+      display: inline-block; height: 100%; vertical-align: middle;
+    }
+    .weather .text .today .left .tem{
+      font-size: 3.8rem; text-align: center; font-family: microsoft yahei;
+    }
+    .weather .text .today .left .date{
+      border-radius: 20px; padding: 2px 10px; margin-top: -6px; font-size: 0.7rem;
+      background-color: rgba(0,0,0,.2);
+    }
+    .weather .text .today .left .date span{
+      text-transform: uppercase; margin-right: 3px;
+    }
+    .weather .text .today .right{
+      height: auto; margin-left: 6px;
+    }
+    .weather .text .today .right .weath{
+      text-align: center;
+    }
+    .weather .text .today .right .weath img{
+      width: 46px;
+    }
+    .weather .text .today .right .num{
+      margin-top: 2px; font-size: 0.9rem;
+    }
+    .weather .text .next{
+      display: inline-block; height: 100%;
+    }
+    .weather .text .next ul{
+      height: 100%;
+    }
+    .weather .text .next li{
+      display: inline-block; width: 90px; height: 100%; font-size: 1rem; text-align: center;  border-right: 1px solid;
+      border-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.0)) 10;box-sizing: border-box; padding-top: 16px;
+    }
+    .weather .text .next li .day{
+      display: inline-block; padding: 0 10px;  text-transform: uppercase; font-size: 0.5rem; background-color: rgba(0,0,0,.2);
+      border-radius: 10px; margin-bottom: 10px;
+    }
+    .weather .text .next li .tem{
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="weather e-box">
+    <div class="wrap">
+      <div class="img e-box">
+        <div class="city">
+          <p>杭州</p>
+        </div>
+        <ul class="tip">
+          <li><i class="iconfont icon-taiyang"></i>weather</li>
+        </ul>
+      </div>
+      <div class="text">
+        <div class="today e-box">
+          <div class="left">
+            <p class="tem">82</p>
+            <p class="date"><span>monday</span><i>27</i></p>
+          </div>
+          <div class="right">
+            <p class="weath"><img src="http://api.map.baidu.com/images/weather/night/duoyun.png" /></p>
+            <p class="num"><i>4mph</i> / <span>67</span></p>
+          </div>
+        </div>
+        <div class="next">
+          <ul>
+            <li>
+              <p class="day">tue</p>
+              <p class="weath"><img src="http://api.map.baidu.com/images/weather/night/duoyun.png" /></p>
+              <p class="tem">60</p>
+            </li>
+            <li>
+              <p class="day">tue</p>
+              <p class="weath"><img src="http://api.map.baidu.com/images/weather/night/duoyun.png" /></p>
+              <p class="tem">60</p>
+            </li>
+            <li>
+              <p class="day">tue</p>
+              <p class="weath"><img src="http://api.map.baidu.com/images/weather/night/duoyun.png" /></p>
+              <p class="tem">60</p>
+            </li>
+            <li>
+              <p class="day">tue</p>
+              <p class="weath"><img src="http://api.map.baidu.com/images/weather/night/duoyun.png" /></p>
+              <p class="tem">60</p>
+            </li>
+            <li>
+              <p class="day">tue</p>
+              <p class="weath"><img src="http://api.map.baidu.com/images/weather/night/duoyun.png" /></p>
+              <p class="tem">60</p>
+            </li>
+            <li>
+              <p class="day">tue</p>
+              <p class="weath"><img src="http://api.map.baidu.com/images/weather/night/duoyun.png" /></p>
+              <p class="tem">60</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var xhr=new XMLHttpRequest();
+    xhr.open("get","http://jirenguapi.applinzi.com/weather.php",true);
+    xhr.send();
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState===4){
+            if(xhr.status===200||xhr.status===304){
+//                console.log(JSON.parse(xhr.responseText));
+                var data=JSON.parse(xhr.responseText)["results"][0];
+                var currentCity=data["currentCity"];
+                var weatherArr=data["weather_data"];
+                console.log(weatherArr);
+                console.log(dayArr(weatherArr));
+            }
+            else console.log("出错了");
+        }
+    }
+    //将服务器传来的星期数据转为英文(函数作用：参数为汉字星期字符串转化为英文字符串)
+    function day(str){
+        var arr1=["周一","周二","周三","周四","周五","周六","周日"];
+        var arr2=["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+        var index;
+        arr1.forEach(function(value,ind){
+            if(str===value) {
+                index=ind; return;
+            };
+        });
+        return arr2[index];
+    }
+    //将转变的所有英文星期变成一个星期数组(函数作用：参数为服务器传来的weatherArr数组，通过调用day()函数转化为英文数组)
+    function dayArr(arr){
+        var arr1=[];
+        arr.forEach(function(value){
+            arr1.push(day(value["date"].slice(0,2)));
+        });
+        return arr1;
+    }
+    /*//将星期数组绑定到DOM元素上
+    function dayPlace(arr){
+        $(".weather").find(".text .next li .day").
+    }*/
+
+  </script>
+  
+</body>
+</html>
