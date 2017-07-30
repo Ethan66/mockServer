@@ -167,6 +167,7 @@
                 var weatherArr=data["weather_data"];
                 console.log(weatherArr);
                 console.log(dayArr(weatherArr));
+                dayPlace(dayArr(weatherArr));
             }
             else console.log("出错了");
         }
@@ -191,10 +192,16 @@
         });
         return arr1;
     }
-    /*//将星期数组绑定到DOM元素上
+    //将星期数组绑定到DOM元素上
     function dayPlace(arr){
-        $(".weather").find(".text .next li .day").
-    }*/
+        $(".weather").find(".text .today .left .date span").text(arr[0]);
+        $(".weather").find(".text .next ul li").each(function(){
+           $(this).find(".day").text(arr[index+1])
+        });
+        $(".weather").find(".text .next li .day").forEach(function(value,index){
+            value.text(arr[index+1]);
+        });
+    }
 
   </script>
   
