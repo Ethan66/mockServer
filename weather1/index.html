@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_nuurrklxfaq3erk9.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <style type="text/css">
+    body,div,p,ul,li{
+      padding:0; margin: 0;
+    }
+    i{
+      font-style: normal;
+    }
+    li{
+      list-style: none;
+    }
+    .clearfix:after{
+      display: block; content: ""; clear:both;
+    }
+    .e-box{
+      box-sizing: border-box;
+    }
+    .weather{
+      max-width: 1000px; height: 637px; background:url(images/1.jpg) no-repeat; background-size: cover; margin: 0 auto;
+    }
+    .weather .info{
+      padding: 36px 6% 130px; font-family: microsoft yahei; color: #fff; position: relative;
+    }
+    .weather .today{
+      letter-spacing: 0.1rem; line-height: 1.5; float: left;
+    }
+    .weather .today .tem{
+      font-size: 3rem; letter-spacing: 0;
+    }
+    .weather .today .time{
+      letter-spacing: 0.1rem;
+    }
+    .weather .location{
+       position: absolute; right: 6%;
+    }
+    .weather .location .wrap{
+      display: inline-block; vertical-align: bottom; margin-left: 2px;
+    }
+    .weather .location .city{
+      font-size: 1.4rem; font-weight: bold; letter-spacing: 0.1rem;
+    }
+    .weather .location .date{
+      font-size: 0.8rem;
+    }
+    .weather .location .city1 i{
+      display: block; text-transform: uppercase; text-align: center; font-size: 0.5rem;
+    }
+    .weather .location .city1 .iconfont{
+      font-size: 1.8rem;
+    }
+    .weather .info .btn{
+      background-color: #8B6BD6; padding: 8px 14px 8px 20px; border-bottom-left-radius: 30px; border-top-left-radius: 30px;
+      cursor: pointer; position: absolute; top: 200px; right:0;
+    }
+    .weather .more{
+      color: #fff;
+    }
+    .weather .more .tip{
+      background-color: rgba(0,0,0,.3); margin-bottom: 2px;
+    }
+    .weather .more .tip li{
+      float: left; width: 50%; padding: 12px 0; text-align: center; box-sizing: border-box;
+    }
+    .weather .more .tip li:first-child{
+      border-right: 1px solid rgba(255,255,255,.5);
+    }
+    .weather .more .tip li i{
+      margin-right: 6px;
+    }
+    .weather .more .tipCol li{
+      float: left; width: 50%; height: 10px; background-color: #EBC66B;
+    }
+    .weather .more .tipCol li:last-child{
+      background-color: #25ABAC;
+    }
+    .weather .more .wList{
+      background-color: rgba(0,0,0,.1);
+    }
+    .weather .more .wList li{
+      width: 33.33333%; border-right: 1px solid; border-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.0)) 10;
+      text-align: center; padding: 44px 0; float: left; box-sizing: border-box;
+    }
+    .weather .more .wList li .week{
+      display: inline-block; padding: 2px 14px; border-radius: 18px; background-color: rgba(0,0,0,.3); margin-bottom: 30px;
+    }
+    .weather .more .wList li .img{
+      margin-bottom: 16px;
+    }
+    .weather .more .wList li .wind{
+      font-size: 0.8rem; margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="weather">
+    <div class="info clearfix">
+      <div class="today">
+        <p class="tem"><span>36</span>℃</p>
+        <p class="time">
+          <span class="day">周五</span>
+          <span class="date">07月29日(实时：32℃)</span>
+        </p>
+        <p class="weath">晴转多云</p>
+        <p class="wind">东风转西北风</p>
+        <p class="temscope">36-37℃</p>
+      </div>
+      <div class="location">
+        <div class="wrap">
+          <p class="city"><span>上海</span></p>
+          <p class="date">2017-07-28</p>
+        </div>
+        <div class="wrap">
+          <p class="city1">
+            <i class="iconfont icon-dingwei1"></i>
+            <i>hangzhou</i>
+          </p>
+        </div>
+      </div>
+      <div class="btn">
+        <p>查询</p>
+      </div>
+    </div>
+    <div class="more">
+      <ul class="tip clearfix">
+        <li>
+          <i class="iconfont icon-taiyang"></i>天气预报
+        </li>
+        <li>
+          <i class="iconfont icon-feiji"></i>生活指数
+        </li>
+      </ul>
+      <ul class="tipCol">
+        <li></li>
+        <li></li>
+      </ul>
+      <ul class="wList clearfix">
+        <li>
+          <p class="week">周二</p>
+          <p class="img">
+            <img src="http://api.map.baidu.com/images/weather/night/duoyun.png" />
+            <img src="http://api.map.baidu.com/images/weather/night/duoyun.png" />
+          </p>
+          <p class="wind"></p>
+          <p class="tem">34-37℃</p>
+        </li>
+        <li>
+          <p class="week">周二</p>
+          <p class="img">
+            <img src="http://api.map.baidu.com/images/weather/night/duoyun.png" />
+            <img src="http://api.map.baidu.com/images/weather/night/duoyun.png" />
+          </p>
+          <p class="wind"></p>
+          <p class="tem">34-37℃</p>
+        </li>
+        <li>
+          <p class="week">周二</p>
+          <p class="img">
+            <img src="http://api.map.baidu.com/images/weather/night/duoyun.png" />
+            <img src="http://api.map.baidu.com/images/weather/night/duoyun.png" />
+          </p>
+          <p class="wind"></p>
+          <p class="tem">34-37℃</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    var xhr=new XMLHttpRequest();
+    xhr.open("get","http://jirenguapi.applinzi.com/weather.php",true);
+    xhr.send();
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState===4){
+            if(xhr.status===200||xhr.status===304){
+//                console.log(JSON.parse(xhr.responseText));
+                var data=JSON.parse(xhr.responseText)["results"][0];
+                var date=JSON.parse(xhr.responseText)["date"];
+                var currentCity=data["currentCity"];
+                var weatherArr=data["weather_data"];
+                $(".weather").find(".location .city span").text(currentCity);
+                $(".weather").find(".location .date").text(date);
+                nowtemPlace(weatherArr[0]);
+                temPlace(weatherArr);
+                console.log(weatherArr);
+            }
+            else console.log("出错了");
+        }
+    }
+    //当天天气情况
+    function nowtemPlace(arr){
+        var $today=$(".weather").find(".today");
+        $today.find(".tem span").text(arr["date"].slice(-4,-2));
+        $today.find(".time .day").text(arr["date"].slice(0,2));
+        $today.find(".time .date").text(arr["date"].slice(2,-1)+")");
+        $today.find(".weath").text(arr["weather"]);
+        $today.find(".wind").text(arr["wind"]);
+        $today.find(".temscope").text(arr["temperature"]);
+    }
+    //余下3天天气情况
+    function temPlace(arr){
+        arr.forEach(function(value,index){
+            if(index===0) return;
+            var $li=$(".weather").find(".more .wList li").eq(index-1);
+           $li.find(".week").text(value["date"]);
+           $li.find(".img img").first().attr("src",value["dayPictureUrl"]);
+           $li.find(".img img").last().attr("src",value["nightPictureUrl"]);
+           $li.find(".wind").text(value["wind"]);
+            $li.find(".tem").text(value["temperature"]);
+        });
+    }
+    /*//将服务器传来的星期数据转为英文(函数作用：参数为汉字星期字符串转化为英文字符串)
+    function day(str){
+        var arr1=["周一","周二","周三","周四","周五","周六","周日"];
+        var arr2=["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+        var index;
+        arr1.forEach(function(value,ind){
+            if(str===value) {
+                index=ind; return;
+            };
+        });
+        return arr2[index];
+    }
+    //将转变的所有英文星期变成一个星期数组(函数作用：参数为服务器传来的weatherArr数组，通过调用day()函数转化为英文数组)
+    function dayArr(arr){
+        var arr1=[];
+        arr.forEach(function(value){
+            arr1.push(day(value["date"].slice(0,2)));
+        });
+        return arr1;
+    }
+    //将星期数组绑定到DOM元素上
+    function dayPlace(arr){
+        $(".weather").find(".text .today .left .date span").text(arr[0]);
+        $(".weather").find(".text .next ul li").each(function(index){
+           $(this).find(".day").text(arr[index+1].slice(0,3));
+        });
+    }*/
+
+  </script>
+  
+</body>
+</html>
