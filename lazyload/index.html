@@ -16,7 +16,7 @@
       display: block; content: ""; clear:both;
     }
     .new{
-      width: 600px; margin: 20px auto 0;
+      width: 600px; margin: 20px auto 1200px;
     }
     .new li{
       margin-bottom: 20px;
@@ -32,6 +32,9 @@
     }
     .new li h3{
       font-size: 14px; color: #333; margin-bottom: 10px;
+    }
+    .new .noMore{
+      height: 3px;
     }
   </style>
 </head>
@@ -72,21 +75,42 @@
         </a>
       </li>
     </ul>
+    <p class="noMore"></p>
   </div>
 
   <script>
+    var page=3;
     $(window).on("scroll",function(){
-        
+        if(isShow($(".new .noMore"))){
+            console.log("1");
+//            getNews();
+        }
     });
-    var page=1;
+    getNews();
     function getNews(){
         $.ajax({url:"/getNews",method:"get",data:{page:page}}).done(function(data){
+            console.log(data);
+            appendHtml(data["data"]);
             return data;
         }).fail(function(){
             console.log("出错了");
         });
     };
-    getNews();
+    function isShow($elem){
+        var windowHeight=$(window).height();
+        var scrollTop=$(window).scrollTop();
+        var offsetTop=$elem.offset().top;
+        if(offsetTop>scrollTop&&offsetTop<scrollTop+windowHeight){
+            return true;
+        }
+        return false;
+    }
+    function appendHtml(arr){
+        $(arr).each(function(value,index,arr){
+           console.log(index);
+        });
+        return arr;
+    }
   </script>
   
 </body>
