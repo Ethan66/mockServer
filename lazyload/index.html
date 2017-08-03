@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <style type="text/css">
+    body,div,ul,li,a,img,p,h3{
+      margin: 0; padding: 0;
+    }
+    li{
+      list-style:none;
+    }
+    a{
+      text-decoration: none;
+    }
+    .clearfix:after{
+      display: block; content: ""; clear:both;
+    }
+    .new{
+      width: 600px; margin: 20px auto 0;
+    }
+    .new li{
+      margin-bottom: 20px;
+    }
+    .new li a{
+      display: block; font-size: 12px; color: #ccc;
+    }
+    .new li .img{
+      float: left; margin-right: 10px;
+    }
+    .new li img{
+      width: 50px; height: 50px;
+    }
+    .new li h3{
+      font-size: 14px; color: #333; margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="new">
+    <ul>
+      <li class="clearfix">
+        <a href="#">
+          <div class="img">
+            <img src="http://inews.gtimg.com/newsapp_ls/0/531730377_150120/0" />
+          </div>
+          <div class="text">
+            <h3>中国轰6K研发险些被俄罗斯发动机厂商卡脖子</h3>
+            <p>近日，轰6K＂战神＂轰炸机首次公开亮相。在中国...</p>
+          </div>
+        </a>
+      </li>
+      <li class="clearfix">
+        <a href="#">
+          <div class="img">
+            <img src="http://inews.gtimg.com/newsapp_ls/0/531730377_150120/0" />
+          </div>
+          <div class="text">
+            <h3>中国轰6K研发险些被俄罗斯发动机厂商卡脖子</h3>
+            <p>近日，轰6K＂战神＂轰炸机首次公开亮相。在中国...</p>
+          </div>
+        </a>
+      </li>
+      <li class="clearfix">
+        <a href="#">
+          <div class="img">
+            <img src="http://inews.gtimg.com/newsapp_ls/0/531730377_150120/0" />
+          </div>
+          <div class="text">
+            <h3>中国轰6K研发险些被俄罗斯发动机厂商卡脖子</h3>
+            <p>近日，轰6K＂战神＂轰炸机首次公开亮相。在中国...</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    $(window).on("scroll",function(){
+        
+    });
+    var page=1;
+    function getNews(){
+        $.ajax({url:"/getNews",method:"get",data:{page:page}}).done(function(data){
+            return data;
+        }).fail(function(){
+            console.log("出错了");
+        });
+    };
+    getNews();
+  </script>
+  
+</body>
+</html>
