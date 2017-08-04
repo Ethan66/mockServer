@@ -16,7 +16,7 @@
       display: block; content: ""; clear:both;
     }
     .new{
-      width: 600px; margin: 20px auto 1200px;
+      width: 600px; margin: 20px auto 0;
     }
     .new li{
       margin-bottom: 20px;
@@ -41,7 +41,7 @@
 <body>
   <div class="new">
     <ul>
-      <li class="clearfix">
+      <!--<li class="clearfix">
         <a href="#">
           <div class="img">
             <img src="http://inews.gtimg.com/newsapp_ls/0/531730377_150120/0" />
@@ -62,36 +62,31 @@
             <p>近日，轰6K＂战神＂轰炸机首次公开亮相。在中国...</p>
           </div>
         </a>
-      </li>
-      <li class="clearfix">
-        <a href="#">
-          <div class="img">
-            <img src="http://inews.gtimg.com/newsapp_ls/0/531730377_150120/0" />
-          </div>
-          <div class="text">
-            <h3>中国轰6K研发险些被俄罗斯发动机厂商卡脖子</h3>
-            <p>近日，轰6K＂战神＂轰炸机首次公开亮相。在中国...</p>
-          </div>
-        </a>
-      </li>
+      </li>-->
     </ul>
     <p class="noMore"></p>
   </div>
 
   <script>
-    var page=3;
-    $(window).on("scroll",function(){
-        if(isShow($(".new .noMore"))){
-            console.log("1");
-//            getNews();
-        }
-    });
+    var page=0;
+    var isArriveData=true;
+    var isOver=false;
     getNews();
+    $(window).on("scroll",function(){
+        checkNews();
+    });
+    function checkNews(){
+        if(isShow($(".new .noMore"))&&!isOver&&isArriveData){
+            getNews();
+        }
+    }
     function getNews(){
+        isArriveData=false;
         $.ajax({url:"/getNews",method:"get",data:{page:page}}).done(function(data){
-            console.log(data);
             appendHtml(data["data"]);
-            return data;
+            page++;
+            isArriveData=true;
+            checkNews();
         }).fail(function(){
             console.log("出错了");
         });
@@ -106,8 +101,17 @@
         return false;
     }
     function appendHtml(arr){
-        $(arr).each(function(value,index,arr){
-           console.log(index);
+        var $ul=$(".new ul"); var html;
+        if(arr.length===0) {
+            isOver=true;
+            $(".new .noMore").text("没有更多数据了"); return;
+        }
+        $(arr).each(function(){
+            html='<li class="clearfix"><a href="#"><div class="img">';
+            html+='<img src='+this.img+'/></div>';
+            html+='<div class="text"><h3>'+this.title+'</h3>';
+            html+='<p>'+this.brif+'</p></div></a></li>';
+            $ul.append(html);
         });
         return arr;
     }
